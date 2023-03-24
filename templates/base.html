@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>BIHE</title>
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock navbar %}
+
+
+    {% block stylesheet %}
+        <link rel = "stylesheet" href="{% static 'css/bs.min.css' %}" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'navbar/fonts/icomoon/style.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'navbar/css/owl.carousel.min.css' %}" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'navbar/css/bootstrap.min.css' %}" />
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'navbar/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+        <link  rel="stylesheet" href="{% static 'profile/bs2.min.css' %}" />
+        <link  rel="stylesheet" href="{% static '/profile/button.css' %}" />
+    {% endblock stylesheet %}
+</head>
+    <div class="">
+        
+        {% block content %}
+
+        {% endblock content %}
+
+    </div>
+
+    {% block script %}
+    <script src="{% static 'js/jquery.min.js' %}" type = "text/javascript"></script>
+    <script src="{% static 'js/bs.min.js' %}" type = "text/javascript"></script>
+    <script src="{% static 'navbar/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'navbar/js/popper.min.js' %}" ></script>
+    <script src="{% static 'navbar/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'navbar/js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'navbar/js/main.js' %}"></script>
+    <script src="{% static 'css/nav.css' %}"></script>
+    {% endblock script %}
+
+</body>
+</html>

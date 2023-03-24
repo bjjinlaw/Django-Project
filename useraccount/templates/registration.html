@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registration</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href="{% static 'css/bs.min.css' %}" type="text/css" />
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'registration/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'registration/css/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+			<div class="inner">
+				<form method="post" action="">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="text text-danger">
+                        {{ field.errors }}
+                    </div>
+                    {% endfor %}
+					<h3>Registration Form</h3>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="">First Name</label>
+							<input type="text" class="form-control" name="first_name">
+						</div>
+						<div class="form-wrapper">
+							<label for="">Last Name</label>
+							<input type="text" class="form-control" name="last_name">
+						</div>
+					</div>
+					<div class="form-wrapper">
+						<label for="">Email</label>
+						<input type="text" class="form-control" name="email">
+					</div>
+                    <div class="form-wrapper">
+							<label for="">Username</label>
+							<input type="text" class="form-control" name="username">
+						</div>
+					<div class="form-wrapper">
+						<label for="">Password</label>
+						<input type="password" class="form-control" name="password1">
+					</div>
+					<div class="form-wrapper">
+						<label for="">Confirm Password</label>
+						<input type="password" class="form-control" name="password2">
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" id="check" onclick="enable()"> I caccept the Terms of Use & Privacy Policy.
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="form-group">
+	            	<button disabled="true" id="btn" type="submit" class="btn btn-primary submit px-3">Register</button>
+	            </div>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+    <script>
+    function enable() {
+        var check = document.getElementById("check");
+        var btn = document.getElementById("btn");
+        if (check.checked) {
+            btn.removeAttribute("disabled");
+        }  else {
+            btn.disabled = "true";
+        }
+
+    }
+    </script>
+</html>

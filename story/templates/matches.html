@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for user in users %}
+
+<div class="container emp-profile mt-5">
+            <form method="get">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="profile-img">
+                        <style>
+                            .thumbnail {
+                                width: 200px;
+                                height: 200px;
+                                border: none;
+                                border-radius: 100px;
+                            }                        
+                        </style>
+                        {% if user.profile.avatar %}
+                            <img class="thumbnail" src="{{ user.profile.avatar.url }}" alt=""/>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    </h5>
+                                    <h6>
+                                    </h6>
+                                    <p class="proile-rating"><span></span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                            </ul>  
+                        
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    <a href="{% url 'user:visit_profile' user.profile.id %}" class="editbtn" role="button">Visit Profile</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Username</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.username }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gender</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.profile.gender }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.email }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Contact</label>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <p>{{ user.profile.contact }}</p>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.profile.address }}</p>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hubby</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.profile.hubby }}</p>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Favourite Foods</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.profile.favourite_foods }}</p>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Favoruite Places</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.profile.favourite_places }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.age }}</p>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Height</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.height }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Marital Status</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.marital_status }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Religion</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.religion }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Mother Tongue</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.mother_tongue }}</p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Country</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                
+                                                <p>{{ user.Profile.country }}</p>
+                                                
+                                            </div>
+                                        </div>
+                            
+                            
+                                        <style>
+                                    table.customTable {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    border-width: 2px;
+                                    border-color: lightgrey;
+                                    border-style: solid;
+                                    color: #000000;
+                                
+                                    }
+
+                                    table.customTable td, table.customTable th {
+                                    border-width: 2px;
+                                    border-color: grey;
+                                    border: None;
+                                    border-style: ;
+                                    padding: 5px;
+                                    }
+
+                                    table.customTable thead {
+                                    background-color: lightgrey;
+                                    }
+                                    </style>
+
+                                    <table class="customTable">
+                                    <thead>
+                                        <tr>
+                                        <th>College Name</th>
+                                        <th>Degree</th>
+                                        <th>Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for education in user.profile.educations.all %}
+                                        <tr>
+                                        <td>{{ education.college_name }}</td>
+                                        <td>{{ education.degree}}</td>
+                                        <td>{{ education.percentage }}</td>
+                                        </tr>
+                                            {% endfor %}
+                                    </tbody>
+                                    </table>
+
+                                    <table class="customTable mt-4">
+                                    <thead>
+                                        <tr>
+                                        <th>Company Name</th>
+                                        <th>Department</th>
+                                        <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for job in user.profile.jobs.all %}
+                                    
+                                        <tr>
+                                        <td>{{ job.company_name }}</td>
+                                        <td>{{ job.department }}</td>
+                                        <td>{{ job.salary }}</td>
+                                        </tr>
+                                            {% endfor %}
+                                    </tbody>
+                                    </table>
+
+                            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        {% endfor %}
+{% endblock content %}

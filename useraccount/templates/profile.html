@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container emp-profile mt-5">
+            <form method="get">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <div class="profile-img">
+                        <style>
+                            .thumbnail {
+                                width: 200px;
+                                height: 200px;
+                                border: none;
+                                border-radius: 100px;
+                            }                        
+                        </style>
+                        {% if user.profile.avatar %}
+                            <img class="thumbnail" src="{{ user.profile.avatar.url }}" alt=""/>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    </h5>
+                                    <h6>
+                                    </h6>
+                                    <p class="proile-rating"><span></span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    
+            
+<a href="{% url 'user:edit_profile' user.username %}" class="editbtn" role="button">Edit Profile</a>
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Username</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.username }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gender</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.gender }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ user.email }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Contact</label>
+                                            </div>
+                                            {% for detail in profile %}
+                                            <div class="col-md-6">
+                                                <p>{{ detail.contact }}</p>
+                                             {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.address }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.age }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Height</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.height }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Marital Status</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.marital_status }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Religion</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.religion }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Mother Tongue</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.mother_tongue }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Country</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.country }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hubby</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.hubby }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Favourite Foods</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.favourite_foods }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Favourite Places</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% for detail in profile %}
+                                                <p>{{ detail.favourite_places }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>                           
+
+                                    
+                                    <style>
+                                    table.customTable {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    border-width: 2px;
+                                    border-color: lightgrey;
+                                    border-style: solid;
+                                    color: #000000;
+                                
+                                    }
+
+                                    table.customTable td, table.customTable th {
+                                    border-width: 2px;
+                                    border-color: grey;
+                                    border: None;
+                                    border-style: ;
+                                    padding: 5px;
+                                    }
+
+                                    table.customTable thead {
+                                    background-color: lightgrey;
+                                    }
+                                    </style>
+
+                                    <table class="customTable">
+                                    <thead>
+                                        <tr>
+                                        <th>College Name</th>
+                                        <th>Degree</th>
+                                        <th>Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for detail in education %}
+                                        <tr>
+                                        <td>{{ detail.college_name }}</td>
+                                        <td>{{ detail.degree }}</td>
+                                        <td>{{ detail.percentage }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    </table>
+
+                                    <table class="customTable mt-4">
+                                    <thead>
+                                        <tr>
+                                        <th>Company Name</th>
+                                        <th>Department</th>
+                                        <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for detail in job %}
+                                        <tr>
+                                        <td>{{ detail.company_name }}</td>
+                                        <td>{{ detail.department }}</td>
+                                        <td>{{ detail.salary }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    </table>
+
+
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                       {% for detail in profile %}
+                                            <p>{{ detail.bio }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+        
+
+{% endblock content %}
